@@ -1,24 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
+import React,{useState} from 'react';
 import './App.css';
+import { Navbar } from './components/Navbar';
+import { ModalContainer } from './components/ModalContainer';
 
 function App() {
+  const [open, setOpen]=useState(false);
+
+ const openMenu=()=>{
+   setOpen(true);
+ }
+ const closeModal=()=>{
+   setOpen(false)
+ }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar openfn={openMenu}/>
+      
+      <ModalContainer show={open} close={closeModal}/>
     </div>
   );
 }
